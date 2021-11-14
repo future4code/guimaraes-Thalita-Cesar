@@ -21,9 +21,6 @@ function imprimeMensagem() {
 // EXERCÍCIO 01
 function calculaAreaRetangulo() {
   // implemente sua lógica aqui
-  const alturaRetangulo= Number(prompt ("Qual a altura do retangulo?")) 
-  const larguraRetangulo = Number(prompt("Qual a largura do retângulo?"))
-  return alturaRetangulo*larguraRetangulo
 }
 
 // EXERCÍCIO 02
