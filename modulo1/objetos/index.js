@@ -167,9 +167,9 @@ console.log (filmes())
 
 //3 
 
-fruta1(!false)
+const novaFunction = fruta1({nome:"abacaxi", disponibilidade: true})
 
-console.log(fruta1())
+console.log(novaFunction)
 
 
 
