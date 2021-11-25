@@ -165,11 +165,7 @@ O primeiro filme foi lançado no mesmo ano do segundo? ${igual} `)
 
 console.log (filmes())
 
-//3 
 
-const novaFunction = fruta1({nome:"abacaxi", disponibilidade: true})
-
-console.log(novaFunction)
 
 
 
