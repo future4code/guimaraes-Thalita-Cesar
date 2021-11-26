@@ -165,11 +165,7 @@ O primeiro filme foi lançado no mesmo ano do segundo? ${igual} `)
 
 console.log (filmes())
 
-//3 
 
-fruta1(!false)
-
-console.log(fruta1())
 
 
 
