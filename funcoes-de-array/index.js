@@ -86,9 +86,6 @@ const novoArrayB = pets.filter((item, index, array) => {
 console.log(novoArrayB)
     
 //c) Crie um novo array que possuirá mensagens para enviar para todos os clientes que são poodles. A mensagem deve ser: "Você ganhou um cupom de desconto de 10% para tosar o/a `[NOME]`!"
-    
-
-
 
 const novoArrayC =  pets.filter((pets) => {
    return pets.raca.toLowerCase() === "poodle";
@@ -114,47 +111,7 @@ console.log('Você ganhou um cupom de desconto de 10% para tosar o/a  ' + nomesn
        { nome: "Berinjela kg", categoria: "Hortifruti", preco: 8.99 },
        { nome: "Sabão em Pó Ypê", categoria: "Limpeza", preco: 10.80 }
     ]
- 
-    
-    /*  Resultados esperados em cada item
-        
-        
-      
-        
-        // item B
-        [
-           { nome: "Alface Lavada", preço: 2.38 },
-           { nome: "Guaraná 2l", preço: 7.13 },
-           { nome: "Veja Multiuso", preço: 11.97 },
-           { nome: "Dúzia de Banana", preço: 5.42 },
-           { nome: "Leite", preço: 2.84 },
-           { nome: "Cândida", preço: 3.14 },
-           { nome: "Detergente Ypê", preço: 2.09 },
-           { nome: "Vinho Tinto", preço: 52.25 },
-           { nome: "Berinjela kg", preço: 8.54 },
-           { nome: "Sabão em Pó Ypê", preço: 10.26 }
-        ]
-        
-        // item C
-        [
-           { nome: "Guaraná 2l", categoria: "Bebidas", preço: 7.8 },
-           { nome: "Leite", categoria: "Bebidas", preço: 2.99 },
-           { nome: "Vinho Tinto", categoria: "Bebidas", preço: 55 }
-        ]
-        
-        // item D
-        [
-           { nome: "Detergente Ypê", categoria: "Limpeza", preço: 2.2 },
-           { nome: "Sabão em Pó Ypê", categoria: "Limpeza", preço: 10.80 }
-        ]
-        
-        // item E
-        [
-          "Compre Detergente Ypê por R$2,20",
-        	"Compre Sabão em Pó Ypê por R$10,80"
-        ]
-    */
-        
+
     
 //a) Crie um novo array que contenha apenas o nome de cada item
 
