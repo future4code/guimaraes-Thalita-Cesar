@@ -1,0 +1,39 @@
+Os 7 passos para resolver problemas no JavaScript
+
+1. Ter atenção ao enunciado:
+    *Ler o código com atenção
+    *O que se deve fazer?
+    *Observe as informações únicas ao qual serve para filtrar o código. (Ex.: Selecionar pessoas que completam 60 anos ou mais e ainda não tomaram a vacina)
+
+2. Retirar informações relevantes.
+    *Separar as palavras chaves como nomes de variáveis
+    *Os verbos cria funções
+    *Há condição? (comentário: O código necessita de condições ou é melhor utilizar o loop, ou os dois juntos?)
+
+3. Pensar em entradas e saídas
+    *Como e quais serão os dados recebidos?
+    * Qual deve ser a resposta?
+    * Criar uma função com a entrada e saída pensada.
+
+4. Fazer um esquema visual
+    *Crie um esquema e o monte em diagramas, colocand os inputs e outputs
+    *Um unico problema há formas diferentes de solucionar, então é bom pensar em pelo menos duas formas diferentes.
+
+5. criar código feito
+    *Coloque no papel todas possiveis soluções pensadas
+    *Escolha as melhores soluções e ponha em sua IDE
+    *Teste cada uma das soluções
+
+6. Testar força-bruta
+    * Solução óbvia e pouco performática
+    * Escrever no nosso idioma o programa
+    * transcreverpara a linguagem de programação desejada. 
+7. Refatorar
+    *Dê bons nomes para as variáveis e funções
+    *Separe as funções de cada elemento
+    *Comece com as etapas principais.
+
+Dicas de exercicios:
+*Com a prática constante de exercicios melhora a interpretação e o raciocinio lógico e prepara para processos seletivos. 
+Dicas de sites de exercicios: Uri online Judge(português) e HarkerRank(em inglês).
+
