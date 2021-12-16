@@ -1,31 +1,41 @@
+
+![79641791-06e1c100-8170-11ea-8ecf-b6c889805d55](https://user-images.githubusercontent.com/83131771/146461644-4d0fb26b-318d-4ec1-ad50-143456634104.png)
+
 Alunos(as), sejam bem-vindos(as)!
 
 Esse repositório vai acompanhar vocês até o final do curso, para mantermos a organização, sugerimos que vocês sigam a seguinte estrutura:
 
 ```
 .
-├── quinzena-1
-│   ├── aula1
-│   ├── aula2
-│   ├── aula3
-│   ├── aula4
-│   └── projeto-nome
+├── Modulo-1 - Git e Javascript
+│   ├── sobre-mim
+│   ├── variaveis
+│   ├── operadores
+│   ├── strings-arrays
+│   ├── funcoes
+│   ├── projeto-lista-js
+│   ├── objetos
+│   ├── condicionais
+│   ├── funcoes-de-array
+│   ├── projeto-blackjack
+│   ├── resolvendo-problemas
+│   └── revisao-js
 |
-├── quinzena-2
-│   ├── aula5
-│   ├── aula6
+├── Modulo-2 - html e css
+│   ├── sistema-loja html
+│   ├── sistema-loja css
 │   ├── aula7
 │   ├── aula8
 │   └── projeto-nome
 |
-├── quinzena-3
+├── Modulo-3
 │   ├── aula9
 │   ├── aula10
 │   ├── aula11
 │   ├── aula12
 │   └── projeto-nome
 |
-├── quinzena-4
+├── Modulo-4
 │   ├── aula13
 │   ├── aula14
 │   ├── aula15
