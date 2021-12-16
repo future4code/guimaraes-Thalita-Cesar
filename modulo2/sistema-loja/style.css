@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:700|Roboto:300');
+
+
+body {
+    background-color: #d1b4a4;
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px; 
+	line-height: 1.75; 
+	font-weight: 300; 
+	color: #4e4e4e;
+	align-items: center; 
+	justify-content: center; 
+	min-height: 100vh; 
+	padding: 2rem; 
+}
+
+table, th, td, tr, thead{
+    border: 2px solid #ddd;
+    background-color: white;
+
+  }
+
+h1 {
+	font-family: 'Roboto Slab', serif; 
+	font-weight: 700; 
+	font-size: 2.25rem; 
+	line-height: 1.3333;
+	color: #777472;
+}
+
+
+
+button {
+	border-color: #f7ead7;
+	color: #777472;
+	font-size: 12px;
+	border-radius:  40px;
+	border-style: solid;
+  }
+
+button:a {
+	  list-style: none;
+	  display: inline-block;
+  }
+button:hover {
+	
+	color: #f7ead7;
+	background-color: #777472;
+  }
+input{
+    border-color: #f7ead7;
+	color: #777472;
+	font-size: 16px;
+	border-radius: 40px;
+}
+
+input:hover, tex {
+	
+	color: #f7ead7;
+	background-color: #777472;
+  }
+
+  form{
+
+    display:grid;
+    box-shadow: 5px 5px 15px black;
+    text-align: center;
+    align-items: center;
+    border-color:#f7ead7;
+  }
+
+  .header {
+    padding: 30px;
+    text-align: center;
+    background: #d1b4a4;
+    color: white}
+  
+  /* Style the top navigation bar */
+  .topnav {
+    align-items: center;
+    overflow: hidden;
+    background-color: #f7ead7;
+    display: block;
+    border-radius: 40px;
+
+  }
+  
+  /* Style the topnav links */
+  .topnav a {
+    float: left;
+    display: block;
+    color: #777472;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+  }
+  
+  /* Change color on hover */
+  .topnav a:hover {
+    background-color: #d1b4a4;
+    color: #777472;
+    border-radius: 40px;
+  }
+
+  .card {
+    background-color: #d1b4a4;
+    padding: 20px;
+    margin-top: 20px;
+    width: 85%;
+    float: center;}
+
+    .promo{
+    display: block;
+    margin-top: 100px;
+    margin-bottom: 100px;
+   
+  }
