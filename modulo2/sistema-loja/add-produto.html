@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Adicionar Produto</title>
+    <title>Primaveral - Adicionar Produto</title> 
+    <link rel="shortcut icon" href="img/incone.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <div>
-        <p>Nome da lojinha</p>
+    <div class="header">
+
+        <img class="logo" src="img/Rose-iconcomtitulo.png" height="300" width="300">
+        <p>Sua loja online de perfumes importados! </p>
+     
     </div>
     
-    <div>
+    <div class="topnav">
         <a href="index.html">Página Inicial</a>
         <a href="ctrl-estoque.html">Controle de Estoque</a>
         <a href="add-produto.html">Adicionar Produto</a>
         <a href="funcionarios.html">Funcionários</a>
+        <a href="#" style="float:right">Página de Vendas</a>
     </div>
 
     
@@ -23,25 +30,25 @@
     <form id="formulario" autocomplete="off" name="formulario" accept-charset="novalidade">
         <fieldset class="grupo">
         <div>
-            <label for="link-foto">Link para foto: </label>
+            <label for="link-foto">Link para foto: </label></br>
             <input type="url" id="link-foto" name="link-foto">
         </div>
         
         <div>
-            <label for="descricao">Descrição do produto: </label>
+            <label for="descricao">Descrição do produto: </label></br>
             <!-- Adicione o id apropriado para o input abaixo -->
             <input type="text" id="descrição" name="descrição">
         </div>
         
         <div>
-            <label for="preco">Preço (em R$): </label>
+            <label for="preco">Preço (em R$): </label></br>
             <!-- Adicione o id apropriado e o type para receber números abaixo -->
             <input type="number" id="preço" name="preço" min="1" step="any" >
         </div>
         
         <div>
             <!-- Preencha as propriedades necessárias para os elementos abaixo -->
-            <label>Quantidade disponível: </label>
+            <label>Quantidade disponível: </label></br>
             <input type="number" id="qtd" name="qtd">
         </div>
 
