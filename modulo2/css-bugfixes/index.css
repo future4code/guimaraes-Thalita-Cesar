@@ -91,12 +91,14 @@ div>p:first-child {
 div:nth-child(2),
 div:last-child {
     text-align: center;
+
 }
 
 table {
     width: 60%;
     position:relative;
     text-align: center;
+    margin-bottom: 150px;
 }
 
 table img{
@@ -109,6 +111,19 @@ td button {
     height: 30px;
     border-radius: 5px;
     color: black;
+}
+
+td button:hover {
+    background-color: #74672e;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+}
+
+td button:active {
+
+    color: rgb(255, 255, 255);
 }
 
 
@@ -127,6 +142,7 @@ td button {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    
 }
 
 #back-button:hover {
