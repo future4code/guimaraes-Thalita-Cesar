@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Chau+Philomene+One&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #c7bec0;
+
+}
+nav{
+  
+    width: 100%;
+    align-items: center; 
+    outline: none;
+    border-bottom: 3px solid;
+     border-color: #fcd53a;
+    background-color:#3844db;
+}
+
+header  img{
+    width: 100px;
+    margin: 10px;
+    padding-left: 20px;
+    
+}
+
+nav > input {
+    float: right;
+    margin-right: 80px ;
+    margin-top:30px;
+    border:solid 1px;
+    border-color: #fcd53a;
+    width:300px;
+    height: 30px;
+    background-color:transparent;
+  }
+
+  nav > input::placeholder {
+    color: blanchedalmond;
+  }
+
+  .flex-container{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 80px;
+      margin: 10px;
+      text-decoration: none;
+      align-items: center;
+      align-content: center;
+  
+  }
+  .flex-container img{
+      width: 200px;
+  }
+.item{
+    padding:10px;
+    margin: 10px;
+    border:solid 2px;
+    border-color: #3844db;
+    background-color: rgba(255, 255, 255, 0.575);
+    border-radius: 14px;
+}
+
+.item img{
+    border-radius: 14px;
+}
+.item:hover{
+
+    background-color: #fcd53a;
+    box-shadow:1px 2px 18px 2px #231f20;
+}
+
+.item > a{
+    text-decoration: none;
+    color:#231f20;;
+    text-align: center;
+    font-family: 'Chau Philomene One', sans-serif;
+    text-transform: uppercase;
+}
+
+footer{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    background-color:#3844db;;
+    border-top: 3px solid;
+    border-color: #fcd53a;
+}
+
+.video{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.titulo_video{
+    color:#231f20;
+    text-align: center;
+    font-family: 'Chau Philomene One', sans-serif;
+    text-transform: uppercase;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
