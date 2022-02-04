@@ -9,7 +9,6 @@ const MainContainer = styled.div`
   align-items: center;
 `
 
-
 class App extends React.Component {
   state = {
     posts : [
