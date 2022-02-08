@@ -10,7 +10,7 @@ const MainContainer = styled.div`
 `
 
 class App extends React.Component {
-  state = {
+state = {
     posts : [
      {nomeUsuario:'paulinha', fotoUsuario: 'https://picsum.photos/50/50',
      fotoPost:'https://picsum.photos/200/150'},
@@ -41,5 +41,4 @@ class App extends React.Component {
     );
   }
 }
-
 export default App;
