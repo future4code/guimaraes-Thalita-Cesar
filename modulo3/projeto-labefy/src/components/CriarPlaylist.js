@@ -71,7 +71,11 @@ export default class CriarPlaylist extends React.Component{
         
             <TelaDeCriarPlaylist>
 
-            <h1>Criar Playlist</h1>
+      
+            <img src=
+            "https://media0.giphy.com/media/LwBTamVefKJxmYwDba/giphy.gif?cid=6c09b9529f0d523dabef5101ebb3bd6e2b5d31b522578ef0&rid=giphy.gif&ct=s"
+            style={{width: "400px"}}/>
+            <h3>COMECE AGORA CRIANDO SUA PLAYLIST</h3>
             <div className="PlaylistContainer">
             <br></br>
              <div>

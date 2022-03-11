@@ -1,31 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 body{
   background-image: url(midias/wallpaperbetter.com_2560x1440.jpg);
   background-attachment: fixed;
   background-size: cover;
-  color:white;
+  color:rgb(243, 162, 162);
 }
 
 button{
-  border-radius:5px;
+  border-radius:20px;
   border-style: none;
   background-color: rgb(117, 0, 0);
-  color:white;
+  color:rgb(243, 162, 162);
+  font-family: 'Poppins', sans-serif;
   padding: 10px;
   margin:5px;
 }
 
-input{
-  border-radius:5px;
-border-style: none;
-background-color: white;
+button:hover{
 color:rgb(117, 0, 0);
-padding: 10px;
-margin:5px;
+background: rgb(243, 162, 162);
+
 }
 
+a{
+  text-decoration:none;
+  font-style: bold;
+  padding:10px;
+  color: rgb(243, 162, 162);;
+  font-size:18px;
+}
+
+a:hover{
+  color:rgb(117, 0, 0);
+}
+
+input{
+  border-radius:5px;
+  border-style: none;
+  background-color: rgb(243, 162, 162);
+  color:rgb(117, 0, 0);
+  font-family: 'Poppins', sans-serif;
+  padding: 10px;
+  margin:5px;
+}
+
+
+
 h1,p, h3{
-  color:white;
+  color:rgb(204, 66, 66);
+}
+
+h1, h2, h3{
+  color:#FF1616;
+  font-family: 'Poppins', sans-serif;
 }
 
 .ContainerPrincipal{

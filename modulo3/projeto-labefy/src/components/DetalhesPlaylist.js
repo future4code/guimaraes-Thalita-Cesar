@@ -1,6 +1,17 @@
 import React from "react";
 import axios from "axios";
 import MusicaCard from "./MusicaCard"
+import styled from 'styled-components'
+
+
+const ContainerAdicionar = styled.div`
+background:black;
+padding:20px;
+margin-top:50px;
+margin-bottom:50px;
+border: 2px solid  rgb(117, 0, 0);
+border-radius:5px;
+`
 
 const headers = {
   headers: {
@@ -15,6 +26,9 @@ export default class DetalhesPlaylist extends React.Component{
         listaDeMusicas: [],
       };
 
+      componentDidMount() {
+        this.getPlaylistTracks();
+      }
 
        getPlaylistTracks=()=>{
         
@@ -24,15 +38,12 @@ export default class DetalhesPlaylist extends React.Component{
           headers
         )
         .then((respostas) => {
-          this.setState({ listaMusicas: respostas.data.result.tracks });
+          this.setState({ listaDeMusicas: respostas.data.result.tracks });
           console.log("Atenção", respostas.data.result.tracks);
         })
         .catch((erros) => console.log(erros));
     };
   
-    componentDidMount() {
-      this.getPlaylistTracks();
-    }
 
     addTrackToPlaylist =(ev)=>{
     const body={
@@ -55,6 +66,29 @@ alert("A música foi adicionada com sucesso!");
 this.getPlaylistTrackst();
 };
 
+removeTrackFromPlaylist = (id) => {
+  if (window.confirm("Deseja remover esta música?")) {
+    const idPlay = this.props.playListSelect.id;
+    const urlTrack=  `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${idPlay}/tracks/${id}`
+    console.log('urlTrack', urlTrack)
+    axios
+      .delete( urlTrack,
+        {
+          headers: {
+              Authorization: 'thalita-cesar-guimaraes'
+          }
+      })
+      .then((res) => {
+        alert("Música removida da Playlist");
+      })
+      .catch((erro) => {
+        console.log(erro.response.data.message);
+      });
+  }
+  this.getPlaylistTrackst();
+};
+
+
   onChangeName = (ev) => {
     this.setState({ name: ev.target.value });
   };
@@ -72,13 +106,22 @@ render(){
                 TrackName={musicas.name}
                 TrackArtist={musicas.artist}
                 TrackUrl={musicas.url}
-                TrackId={musicas.id} />
+                TrackId={musicas.id}
+                deletarMusica={()=>this.removeTrackFromPlaylist(musicas.id)} />
     })
 
     console.log(listaDeMusicas)
     return(
         <div>
-            <h3>Adicione nova música:</h3>
+
+            <div>
+              <h1>MÚSICAS</h1>
+            {listaDeMusicas}
+            </div>
+            <ContainerAdicionar>
+            <h3>ADICIONE NOVA MÚSICA:</h3>
+            <p>Atenção: para o link funcionar copie e cole o código que está no link
+              do youtube após o 'v='.</p>
             <input placeholder="Música"
             value= {this.state.name}
             onChange ={this.onChangeName}/>
@@ -87,7 +130,7 @@ render(){
             value= {this.state.artist}
             onChange ={this.onChangeArtist}/>
 
-            <input placeholder="Link da música"
+            <input placeholder="Código do link do Youtube"
             value= {this.state.url}
             onChange ={this.onChangeUrl}/>
             
@@ -95,12 +138,10 @@ render(){
               Adicionar Música
             </button>
 
-            {listaDeMusicas}
-
-            <button onClick={this.props.PaginaVoltar}>
-              Voltar
+          </ContainerAdicionar>
+          <button onClick={this.props.paginaVoltar}>
+           Voltar
             </button>
-
         </div>
 
     )

@@ -3,13 +3,12 @@ import React from 'react'
 import DetalhesPlaylist from './DetalhesPlaylist';
 import styled from 'styled-components'
 
-const PlaylistsContainer = styled.div`
- display: inline block;
- flex-direction: row;
- justify-content: baseline;
- align-items: baseline;
- width: 100%;
- height: 80%;
+const PlaylistsContainer = styled.li`
+  display: flex;
+  min-width: 60px;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
 `
 
     const urlPlayList ='https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists';
@@ -69,7 +68,6 @@ const PlaylistsContainer = styled.div`
     
     
       render(){
-
         if (this.state.paginaTracks) {
             return (
               <DetalhesPlaylist
@@ -91,7 +89,7 @@ const PlaylistsContainer = styled.div`
              </button>
               <button 
               className="botaoExcluir" 
-              onClick={() => this.deletePlaylist(play.id)}>
+              onClick={() => this.props.deletePlaylist(play.id)}>
                 Deletar
                 </button>
               </div>
@@ -102,7 +100,7 @@ const PlaylistsContainer = styled.div`
       return (
     
         <div className="ListDeNomesContainer">
-         <h1>Lista de Playlists</h1>
+         <h1>SUAS PLAYLISTS</h1>
          <br></br>
          <div>{listaPlaylists}</div>
          <br></br>
