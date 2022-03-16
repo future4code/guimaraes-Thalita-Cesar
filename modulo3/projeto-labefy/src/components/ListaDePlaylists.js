@@ -42,13 +42,13 @@ const PlaylistsContainer = styled.li`
       }
 
         // Deletar os usuarios //
-      deletePlaylist =(id)=>{
+      deletePlaylist =(playId)=>{
         if(window.confirm("Deseja realmente excluir a playlist?")===true){
            axios
-          .delete(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`,headers
-          )
+          .delete
+          (`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playId}`,
+          headers)
           .then((res)=>{
-            this.getAllPlaylists()
             alert ("A playlist foi excluída")
           this.getAllPlaylists()
         })
@@ -89,7 +89,7 @@ const PlaylistsContainer = styled.li`
              </button>
               <button 
               className="botaoExcluir" 
-              onClick={() => this.props.deletePlaylist(play.id)}>
+              onClick={() => this.deletePlaylist(play.id)}>
                 Deletar
                 </button>
               </div>
