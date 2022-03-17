@@ -1,0 +1,11 @@
+
+.botaoExcluir{
+    margin:30px;
+}
+
+.botaoTela{
+    padding-right:170px;
+    margin:10px;
+    min-width: 200px;
+    justify-content:end;  
+}

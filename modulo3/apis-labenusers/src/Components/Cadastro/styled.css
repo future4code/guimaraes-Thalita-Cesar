@@ -1,0 +1,17 @@
+h1{
+    text-align: center;
+}
+
+button{
+    padding-right:10px;
+    margin:10px;
+    min-width: 200px;
+}
+
+input{
+    padding-right:170px;
+    margin:10px;
+    min-width: 200px;
+    justify-content: center;
+}
+
