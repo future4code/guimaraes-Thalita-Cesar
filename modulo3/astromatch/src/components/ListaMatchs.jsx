@@ -7,31 +7,28 @@ import React, { useEffect, useState } from 'react';
 
 
 const Card = styled.div`
-
-
-
     width: 22rem;
-
-    @media(max-width: 400px) {
-   width: 22rem;
+    height: 38rem;
+    @media(max-width: 420px) {
+   width: 20rem;
+   height: 35rem;
  },
 `
 
 const Img = styled.img `
   width: 60px;
+  height: 60px;
 `
 
-function ListaMatchs() {
+function ListaMatchs(props) {
 
     const [matchsLista, setMatchsLista] = useState([]);
 
     const getMatches = () => {
-        axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/thalita/matches")
-        .then(response => {
-          setMatchsLista(response.data.matches)
-        })
-        .catch(error => {
-            console.log(error)
+        axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:thalita/matches")
+        .then ((res)=>{ setMatchsLista(res.data.matches)})
+        .catch((err) => {
+            console.log(err)
         })
     }
 
@@ -39,47 +36,45 @@ function ListaMatchs() {
     getMatches()
 }, [matchsLista])
 
-  const LimparMatchs = async () => {
-    try {
-      await axios
-        .put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/thalita/clear")
-        .then(() => window.location.reload())
-    } catch {
-      console.log('Error')
-    }
+  const LimparMatchs = () => {
+    
+      axios
+        .put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:thalita/clear")
+        .then((res)=>{ window.location.reload()})
+        .catch((err) => {
+          console.log(err)
+      })
   }
     return (
-      <div>
-           {matchsLista.map((match) => {
-              return (
-      <Card className="card bg-light mb-5 border-0">
+
+      <Card className="card bg-light m-3 border border-info rounded shadow">
       <div className="card-header bg-light p-1"> 
-      <button className=" btn btn-outline-warning btn-lg ">
+      <button className=" btn btn-outline-warning btn-lg "
+      onClick={props.onClickVoltarPagina}>
        <MdArrowBackIosNew className="text-info" /> 
    </button> 
-
       <img src= {Astromatch} style={{width: "15rem"}}
       /> 
       </div>
-      <div className="card-body align-items-center">
-          <Img src={match.photo}
+      <div className="card-body align-items-center overflow-auto">
+
+           {matchsLista.map((matchs) => {
+              return (
+              <div key={matchs.id}>
+          <Img src={matchs.photo}
           className="card-img img-fluid rounded-circle"/>
-          <span className="card-title text-dark p-4">{match.name}</span>
-      </div>
+          <span className="card-title text-dark p-4">{matchs.name}</span> </div>
+           )})}
+
+          </div> 
         <div className="card-footer bg-light">
-            <button className="btn btn-outline-warning btn-md btn-block"
+            <button className="btn btn-warning btn-md btn-block"
              onClick={LimparMatchs}>
               Limpar Matchs
             </button>
         </div>
     </Card>
-     )
-    })}
-
-    </div>
-    
-    );
-  }
+     )}
   
     
   

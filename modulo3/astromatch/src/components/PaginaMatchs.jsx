@@ -21,9 +21,13 @@ const BotaoMatch = styled.button `
 const Card = styled.div`
 
     width: 22rem;
-
-    @media(max-width: 400px) {
-   width: 18rem;
+    height: 38rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    @media(max-width: 420px) {
+   width: 20rem;
+   height: 35rem;
  },
 `
 
@@ -31,6 +35,10 @@ const Img = styled.img `
 
   max-height: 320px;
   max-width: 20rem;
+
+  @media(max-width: 420px) {
+    max-height: 280px;
+ },
 `
 
 
@@ -38,7 +46,7 @@ const Img = styled.img `
 function PaginaMatchs(props) {
 
   const [matchsLista, setMatchsLista] = useState({});
-
+   
 
     const getProfileToChoose = () => {
         axios
@@ -59,7 +67,7 @@ function PaginaMatchs(props) {
      }
 
      axios
-     .post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/thalita/person/choose-person`, body)
+     .post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:thalita/choose-person`, body)
      .then ((res)=>{
        console.log(res)
        getProfileToChoose()
@@ -72,7 +80,7 @@ function PaginaMatchs(props) {
         choice: true
       }
       axios
-      .post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/thalita/person/choose-person`, body)
+      .post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:thalita/choose-person`, body)
       .then ((res)=>{
         console.log(res)
         getProfileToChoose()
@@ -85,7 +93,7 @@ function PaginaMatchs(props) {
 
          {matchsLista !== null ? (
 
-    <Card className="card bg-light mb-5 border-0">
+    <Card className="card bg-light m-3 border border-info rounded shadow">
 
       <div className="card-header bg-light p-1"> 
 
@@ -93,7 +101,7 @@ function PaginaMatchs(props) {
 
       <button 
       className=" btn btn-outline-warning btn-lg" 
-      onClick={props.changePage}>
+      onClick={props.onClickPaginaDeListas}>
           <BsFillChatRightFill className="text-info" />
       </button> 
 
