@@ -25,7 +25,7 @@ function ListaMatchs(props) {
     const [matchsLista, setMatchsLista] = useState([]);
 
     const getMatches = () => {
-        axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:thalita/matches")
+        axios.get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/thalita/matches")
         .then ((res)=>{ setMatchsLista(res.data.matches)})
         .catch((err) => {
             console.log(err)
@@ -39,7 +39,7 @@ function ListaMatchs(props) {
   const LimparMatchs = () => {
     
       axios
-        .put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:thalita/clear")
+        .put("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/thalita/clear")
         .then((res)=>{ window.location.reload()})
         .catch((err) => {
           console.log(err)

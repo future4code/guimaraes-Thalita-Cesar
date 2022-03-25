@@ -67,7 +67,7 @@ function PaginaMatchs(props) {
      }
 
      axios
-     .post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:thalita/choose-person`, body)
+     .post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/thalita/choose-person`, body)
      .then ((res)=>{
        console.log(res)
        getProfileToChoose()
@@ -80,7 +80,7 @@ function PaginaMatchs(props) {
         choice: true
       }
       axios
-      .post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:thalita/choose-person`, body)
+      .post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/thalita/choose-person`, body)
       .then ((res)=>{
         console.log(res)
         getProfileToChoose()
@@ -141,10 +141,23 @@ function PaginaMatchs(props) {
 
     </Card>
   ) : (
+
+    <Card className="card bg-light m-3 border border-info rounded shadow">
+    <div className="card-header bg-light p-1"> 
+    <img src= {Astromatch} style={{width: "15rem"}}/> 
+    <button 
+    className=" btn btn-outline-warning btn-lg" 
+    onClick={props.onClickPaginaDeListas}>
+        <BsFillChatRightFill className="text-info" />
+    </button> 
+    </div>
+    <div className="card-body align-items-center">
     <div class="alert alert-warning" role="alert">
         <h4 class="alert-heading">Uau!</h4>
-  <p>Você passou por todas as pessoas disponíveis e não há mais matchs. Volte mais tarde</p>
+  <p>Você passou por todas as pessoas disponíveis e não há mais matchs. Volte mais tarde. </p>
       </div>
+</div>   
+</Card>
 )}
 </div>
     );
