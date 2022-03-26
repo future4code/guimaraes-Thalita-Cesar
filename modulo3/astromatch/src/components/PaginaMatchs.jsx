@@ -154,7 +154,7 @@ function PaginaMatchs(props) {
     <div className="card-body align-items-center">
     <div class="alert alert-warning" role="alert">
         <h4 class="alert-heading">Uau!</h4>
-  <p>Você passou por todas as pessoas disponíveis e não há mais matchs. Volte mais tarde. </p>
+  <p>Você passou por todas as pessoas disponíveis e não há mais matchs. Volte mais tarde ou limpe os matchs. </p>
       </div>
 </div>   
 </Card>
