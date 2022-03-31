@@ -1,9 +1,9 @@
 function CreateTripPage() {
     return (
-      <div className="container">
-          <div className="box">
+      <div classNameName="container">
+          <div classNameName="box">
             <div>Imagem</div>
-          <div className="form">
+          <div classNameName="form">
                 <h1> Crie uma Nova viagem</h1>
              
               <input></input>

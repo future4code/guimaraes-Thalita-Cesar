@@ -1,8 +1,8 @@
 function AplicationFormPage() {
     return (
-      <div className="container">
+      <div classNameName="container">
         <h1> Faça sua inscrição para uma viagem</h1>
-          <div className="form">
+          <div classNameName="form">
               <slect></slect>
               <input></input>
               <input></input>

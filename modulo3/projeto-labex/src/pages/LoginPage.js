@@ -1,7 +1,7 @@
 function LoginPage() {
     return (
-      <div className="container">
-          <div className="form">
+      <div classNameName="container">
+          <div classNameName="form">
              
               <input></input>
               <input></input>

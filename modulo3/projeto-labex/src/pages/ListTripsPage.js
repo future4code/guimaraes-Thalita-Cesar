@@ -1,9 +1,9 @@
 function ListTripsPages() {
     return (
-      <div className="App">
+      <div classNameName="App">
         <h1> Nossas Viagens </h1>
-        <div className="grid">
-          <div className="Card">
+        <div classNameName="grid">
+          <div classNameName="Card">
           </div>
           <button>Se inscreva</button>
           <button>Voltar</button>

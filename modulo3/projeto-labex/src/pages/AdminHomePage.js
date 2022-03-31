@@ -1,9 +1,9 @@
 function AdminHomePage() {
     return (
-      <div className="container">
-          <div className="card">
+      <div classNameName="container">
+          <div classNameName="card">
           </div>
-          <div className="botaogrupo">
+          <div classNameName="botaogrupo">
           <button>Voltar</button>
           <button>Criar Viagem</button>
           <button>Logout</button>

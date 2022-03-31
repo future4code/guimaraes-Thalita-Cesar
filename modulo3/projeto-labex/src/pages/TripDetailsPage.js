@@ -1,14 +1,14 @@
 function TripDetailsPage() {
     return (
-      <div className="container">
-          <div className="box">
+      <div classNameName="container">
+          <div classNameName="box">
               <img src=""/>
-              <div className="detalhes">
+              <div classNameName="detalhes">
 
               </div>
           </div>
-          <div className="grid">
-          <div className="card">
+          <div classNameName="grid">
+          <div classNameName="card">
           </div>
           </div>
 
