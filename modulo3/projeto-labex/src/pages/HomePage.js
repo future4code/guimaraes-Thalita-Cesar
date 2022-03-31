@@ -1,4 +1,6 @@
 import { Carousel } from 'react-bootstrap';
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import {useEffect, useState} from 'react'
 import banner1 from "../images/banner1.png"
 import banner2 from "../images/banner2.png"
@@ -6,6 +8,9 @@ import banner3 from "../images/banner3.png"
 import styled from "styled-components"
 import Aos from "aos"
 import "aos/dist/aos.css"
+import Menu from '../components/Menu'
+import Footer from'../components/Footer'
+
 
 const Button = styled.button`
 border-radius:50px;
@@ -32,9 +37,17 @@ export default function HomePage() {
       Aos.init({duration: 2000})
     },[]);
 
+    const navigate = useNavigate()
+
+    const goToListTripsPage = () => {
+      navigate('/trips/list')
+    }
+
 
   return (
-      <div>
+<div>
+    <header> <Menu/></header>
+      <main>
 
 <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
@@ -63,18 +76,21 @@ export default function HomePage() {
          
           <section className="jumbotron text-center mt-5 mb-5 pt-5 pb-5">
         <div className="container mt-5 mb-5">
-          <h1 className="jumbotron-heading" data-aos="fade-up">Viaje Conosco</h1>
-          <p className="lead text-muted" data-aos="fade-up">As melhores viagens do universo é aqui. <br></br>
+          <h1 className="jumbotron-heading" data-aos="fade-up">
+            Viaje Conosco</h1>
+          <p className="lead text-muted" data-aos="fade-up">
+            As melhores viagens do universo é aqui. <br></br>
         Saia da sua bolha terráquea e desvende outros mundos.</p>
-        <Button className="btn btn-lg my-2 mt-5" data-aos="fade-up">Encontre o Pacote Ideal para Você</Button>
+        <Button onClick={goToListTripsPage}
+         className="btn btn-lg my-2 mt-5" data-aos="fade-up">Encontre o Pacote Ideal para Você</Button>
         </div>
 
-        <div class="container">
+        <div className="container">
 
         <h1 className="jumbotron-heading pt-5 pb-5" data-aos="fade-up" >Nossos Destinos</h1>
-  <div class="row " data-aos="fade-up">
+  <div className="row " data-aos="fade-up">
 
-    <div class="col-sm-6 " data-aos="fade-up">
+    <div className="col-sm-6 " data-aos="fade-up">
     <div className="card m-3 shadow ">
       <img src="https://services.meteored.com/img/article/lua-de-jupiter-e-o-melhor-lugar-para-procurar-vida-fora-da-terra-339991-3_1280.jpg"
       className="img-fluid card-img-top"  style={{ height:"300px"}} />
@@ -101,7 +117,7 @@ className="img-fluid card-img-top"  style={{ height:"300px"}}/>
     </div>  </div>
 
 
- <div class="col-sm-6 " data-aos="fade-up">
+ <div className="col-sm-6 " data-aos="fade-up">
  <div className="card m-3 shadow" >
  <img src="https://socientifica.com.br/wp-content/uploads/2021/11/lua-tem-oxigenio.jpg"
  className="img-fluid fluid-card-img-top" style={{ height:"300px"}} />
@@ -285,7 +301,13 @@ className="mr-3 mt-3 rounded-circle" height="60px" style={{width:"60px"}} />
 
   </div>
 </section>
-      </div>
+      </main>
+
+<footer 
+className="footer mt-5 pt-5" 
+style={{backgroundColor: "#ddc4f6"}}> 
+<Footer/> </footer>
+</div>
     );
   }
 

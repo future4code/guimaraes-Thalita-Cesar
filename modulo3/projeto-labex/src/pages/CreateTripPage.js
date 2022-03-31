@@ -1,9 +1,22 @@
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import Menu from '../components/Menu'
+import Footer from'../components/Footer'
+
 function CreateTripPage() {
+
+  const navigate = useNavigate()
+const goBack = () => {
+  navigate(-1)
+}
     return (
-      <div classNameName="container">
-          <div classNameName="box">
+      <div>
+    <header> <Menu/></header>
+      <main>
+      <div className="container">
+          <div className="box">
             <div>Imagem</div>
-          <div classNameName="form">
+          <div className="form">
                 <h1> Crie uma Nova viagem</h1>
              
               <input></input>
@@ -11,11 +24,18 @@ function CreateTripPage() {
               <input></input>
               <textarea></textarea>
               <input></input>
-              <button>Voltar</button>
+              <button onClick={goBack}>Voltar</button>
                 <button>Criar</button>
           </div>
           </div>
       </div>
+      </main>
+
+<footer 
+className="footer mt-5 pt-5" 
+style={{backgroundColor: "#ddc4f6"}}> 
+<Footer/> </footer>
+</div>
     );
   }
   
