@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from "styled-components"
 import Menu from '../components/Menu'
 import Footer from'../components/Footer'
+import Aos from "aos"
+import "aos/dist/aos.css"
 
 
 const Button = styled.button`
@@ -28,18 +30,20 @@ function ListTripsPages() {
    const goBack = () => {
      navigate(-1)
    }
-
+   useEffect(()=>{
+    Aos.init({duration: 2000})
+  },[]);
     return (
       <div>
     <header> <Menu/></header>
       <main>
       <div className="container mt-5 mb-5 pb-5 pt-5">
-        <h1 className="jumbotron-heading text-center mb-5 pb-5" > Nossos Destinos </h1>
+        <h1 className="jumbotron-heading text-center mb-5 pb-5"  > Nossos Destinos </h1>
       
 
         <div className="row">
 
-    <div className="col-sm-6">
+    <div className="col-sm-6" data-aos="fade-up">
       <div className="card m-5 shadow" style={{backgroundColor: "#ddc4f6"}}>
       <div className="card-header">
       <img class="img-fluid card-img-top" 
@@ -62,7 +66,7 @@ function ListTripsPages() {
 
       </div>
 
-      <div className="col-sm-6">
+      <div className="col-sm-6" data-aos="fade-up">
       <div className="card m-5 shadow" style={{backgroundColor: "#ddc4f6"}}>
       <div className="card-header">
       <img class="img-fluid card-img-top" 
@@ -84,7 +88,7 @@ function ListTripsPages() {
       </div>
       </div>
 
-      <div className="col-sm-6">
+      <div className="col-sm-6" data-aos="fade-up">
       <div className="card m-5 shadow" style={{backgroundColor: "#ddc4f6"}}>
       <div className="card-header">
       <img class="img-fluid card-img-top" 
@@ -107,7 +111,7 @@ function ListTripsPages() {
       </div>
       </div>
 
-          <div className="col-sm-6">
+          <div className="col-sm-6" data-aos="fade-up">
           <div className="card m-5 shadow" style={{backgroundColor: "#ddc4f6"}}>
       <div className="card-header">
       <img class="img-fluid card-img-top" 
@@ -132,15 +136,15 @@ function ListTripsPages() {
   
      
     </div>
-    <h4 className="jumbotron-heading text-center mt-5 pt-5" > 
+    <h4 className="jumbotron-heading text-center mt-5 pt-5" data-aos="fade-up"> 
     Escolheu a melhor viagem?  </h4>
-    <p className="lead text-muted text-center mt-1 pt-1">
+    <p className="lead text-muted text-center mt-1 pt-1" data-aos="fade-up">
       Para ser direcionado para nossa página de inscrição de viagem  <br></br>
       basta clicar em se inscrever abaixo.
 </p>
 
      <p className="text-center mb-5 mt-2"> <div class="btn-group" 
-     role="group">
+     role="group" data-aos="fade-up">
 
           <Button onClick={goToApplicationFormPage}
           className="btn btn-lg my-2 mt-5 border-left"

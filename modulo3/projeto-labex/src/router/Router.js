@@ -7,7 +7,7 @@ import AdminHomePage from "../pages/AdminHomePage"
 import CreateTripPage from "../pages/CreateTripPage"
 import TripDetailsPage from "../pages/TripDetailsPage"
 import ErrorPage from "../pages/ErrorPage"
-import Menu from "../components/Menu"
+
 
 function Router() {
 
