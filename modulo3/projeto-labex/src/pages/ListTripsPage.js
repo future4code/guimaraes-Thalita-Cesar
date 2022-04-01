@@ -5,6 +5,10 @@ import Menu from '../components/Menu'
 import Footer from'../components/Footer'
 import Aos from "aos"
 import "aos/dist/aos.css"
+import europa from "../images/europa.jpg"
+import venus from "../images/venus.jpg"
+import marte from "../images/marte.jpg"
+import lua from "../images/lua.jpg"
 
 
 const Button = styled.button`
@@ -47,8 +51,7 @@ function ListTripsPages() {
       <div className="card m-5 shadow" style={{backgroundColor: "#ddc4f6"}}>
       <div className="card-header">
       <img class="img-fluid card-img-top" 
-      style={{ height:"300px"}} 
-      src="https://services.meteored.com/img/article/lua-de-jupiter-e-o-melhor-lugar-para-procurar-vida-fora-da-terra-339991-3_1280.jpg"/>
+      src={europa}/>
       </div>
     <div className="card-body">
     <h4 class="card-title text-center">Europa - Júpiter</h4>
@@ -70,8 +73,7 @@ function ListTripsPages() {
       <div className="card m-5 shadow" style={{backgroundColor: "#ddc4f6"}}>
       <div className="card-header">
       <img class="img-fluid card-img-top" 
-      style={{ height:"300px"}}
-      src="https://www.hypeness.com.br/1/2018/04/Ven1.jpg"/>
+      src={venus}/>
       </div>
     <div className="card-body">
     <h4 class="card-title text-center">Vênus</h4>
@@ -92,8 +94,7 @@ function ListTripsPages() {
       <div className="card m-5 shadow" style={{backgroundColor: "#ddc4f6"}}>
       <div className="card-header">
       <img class="img-fluid card-img-top" 
-      style={{ height:"300px"}}
-      src="https://olhardigital.com.br/wp-content/uploads/2019/08/20190823060412.jpg"/>
+      src={marte}/>
       </div>
     <div className="card-body">
     <h4 class="card-title text-center">Marte</h4>
@@ -115,8 +116,7 @@ function ListTripsPages() {
           <div className="card m-5 shadow" style={{backgroundColor: "#ddc4f6"}}>
       <div className="card-header">
       <img class="img-fluid card-img-top" 
-      style={{ height:"300px"}}
-      src="https://socientifica.com.br/wp-content/uploads/2021/11/lua-tem-oxigenio.jpg"/>
+      src={lua}/>
       </div>
     <div className="card-body">
     <h4 class="card-title text-center">Lua</h4>

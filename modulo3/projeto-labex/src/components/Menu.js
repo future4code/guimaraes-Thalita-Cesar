@@ -56,12 +56,12 @@ const Menu = () => {
 
        <Modal show={show} onHide={handleClose}
         >
-        <Modal.Header closeButton style={{backgroundColor: "#310062"}}>
+        <Modal.Header closeButton>
           <Modal.Title></Modal.Title>
         </Modal.Header>
         <Modal.Body style={{backgroundColor: "#ddc4f6"}}>
         <form className="form">
-         <h3 class="text-center m-3 p-3">Login ADM</h3>
+         <h3 class="text-center m-3 p-3">Login Adm</h3>
                  <div className="form-group input-group m-2 p-2">
                  <button className="btn btn-lg bg-light">
                    <FaUserAstronaut/></button><input type="email" 
@@ -78,11 +78,16 @@ const Menu = () => {
                  <input type="checkbox"/></span></label><br></br>
                  </div>
          </form>
+
+         
         </Modal.Body>
         <Modal.Footer style={{backgroundColor: "#ddc4f6"}}>
+          <div className="btn-group">
         <Button onClick={goToAdminPage}
        className="btn btn-lg"
        >Login</Button> 
+           <Button className="btn btn-lg" >Registre-se</Button> 
+       </div>
         </Modal.Footer>
       </Modal>
         </Nav>

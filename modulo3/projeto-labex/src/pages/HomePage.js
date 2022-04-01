@@ -10,6 +10,16 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import Menu from '../components/Menu'
 import Footer from'../components/Footer'
+import europa from "../images/europa.jpg"
+import venus from "../images/venus.jpg"
+import marte from "../images/marte.jpg"
+import lua from "../images/lua.jpg"
+import perfil1 from "../images/perfil1.jpg"
+import perfil2 from "../images/perfil2.jpg"
+import perfil3 from "../images/perfil3.jpeg"
+import astrobandeira from "../images/astrobandeira.png"
+import gentileza from "../images/gentileza.png"
+
 
 
 const Button = styled.button`
@@ -92,8 +102,8 @@ export default function HomePage() {
 
     <div className="col-sm-6 " data-aos="fade-up">
     <div className="card m-3 shadow ">
-      <img src="https://services.meteored.com/img/article/lua-de-jupiter-e-o-melhor-lugar-para-procurar-vida-fora-da-terra-339991-3_1280.jpg"
-      className="img-fluid card-img-top"  style={{ height:"300px"}} />
+      <img  src={europa}
+      className="img-fluid card-img-top"   />
        <div className="card-img-overlay">
       <h4 className="card-title text-light border">Europa</h4> </div>
     </div> </div>
@@ -101,8 +111,8 @@ export default function HomePage() {
 
     <div className="col-sm-6 " data-aos="fade-up">
     <div className="card m-3  shadow" >
-   <img src="https://www.hypeness.com.br/1/2018/04/Ven1.jpg"
-className="img-fluid card-img-top"  style={{ height:"300px"}}/>
+   <img src={venus}
+className="img-fluid card-img-top" />
  <div className="card-img-overlay">
   <h4 className=" card-title text-light border">Vênus</h4> </div>
   </div>
@@ -110,8 +120,8 @@ className="img-fluid card-img-top"  style={{ height:"300px"}}/>
 
     <div className="col-sm-6 " data-aos="fade-up">
     <div className="card m-3  shadow" >
-    <img src="https://olhardigital.com.br/wp-content/uploads/2019/08/20190823060412.jpg"
-  className="img-fluid card-img-top" style={{ height:"300px"}}/>
+    <img src={marte}
+  className="img-fluid card-img-top"/>
    <div className="card-img-overlay">
       <h4 className="card-title text-light border">Marte</h4> </div>
     </div>  </div>
@@ -119,8 +129,8 @@ className="img-fluid card-img-top"  style={{ height:"300px"}}/>
 
  <div className="col-sm-6 " data-aos="fade-up">
  <div className="card m-3 shadow" >
- <img src="https://socientifica.com.br/wp-content/uploads/2021/11/lua-tem-oxigenio.jpg"
- className="img-fluid fluid-card-img-top" style={{ height:"300px"}} />
+ <img src={lua}
+ className="img-fluid fluid-card-img-top"  />
   <div className="card-img-overlay">
    <h4 className="card-title text-light border">Lua</h4> </div>
  </div>
@@ -234,8 +244,8 @@ className="img-fluid card-img-top"  style={{ height:"300px"}}/>
 
   <div className="media border p-3 mt-5 shadow" data-aos="fade-up">
 
-  <img src="https://i.pinimg.com/236x/c2/b3/45/c2b345a8d9169d2c17b5ec092e2432b6.jpg" alt="Michael Souza" 
-  className="mr-3 mt-3 rounded-circle" height="60px" style={{width:"60px"}} />
+  <img src={perfil1} alt="Michael Souza" 
+  className="mr-3 mt-3 rounded-circle" style={{height:"60px"}} />
   <div className="media-body">
     <h4>Michael Souza<small><i> 19, Outubro de 2021</i></small></h4>
     <p>Viajar com a labeX foi de longe a melhor experiência da minha vida, 
@@ -247,8 +257,8 @@ className="img-fluid card-img-top"  style={{ height:"300px"}}/>
 
   <div className="media border p-3 mt-5 shadow" data-aos="fade-up">
 
-<img src="https://i.pinimg.com/736x/c1/f3/31/c1f3317f44a0d83c43e769892e4d3473.jpg" alt="Carla Lisboa" 
-className="mr-3 mt-3 rounded-circle" height="60px" style={{width:"60px"}} />
+<img src={perfil2}  alt="Carla Lisboa" 
+className="mr-3 mt-3 rounded-circle" style={{height:"60px"}} />
 <div className="media-body">
   <h4>Carla Lisboa<small><i> 05, Novembro de 2021</i></small></h4>
   <p> Eu sou agente de relacionamento espacial e vou no mínimo 5 vezes por ano
@@ -260,8 +270,8 @@ className="mr-3 mt-3 rounded-circle" height="60px" style={{width:"60px"}} />
 
 <div className="media border p-3 mt-5 shadow mb-5" data-aos="fade-up">
 
-<img src="https://s.conjur.com.br/img/b/diogo-santana3.jpeg" alt="Carla Lisboa" 
-className="mr-3 mt-3 rounded-circle" height="60px" style={{width:"60px"}} />
+<img src={perfil3}  alt="Carla Lisboa" 
+className="mr-3 mt-3 rounded-circle" style={{height:"60px"}} />
 <div className="media-body">
   <h4>Emanuel Gonçalves<small><i> 20, Janeiro de 2022</i></small></h4>
   <p> As viagens espaciais em família é sempre na labeX, por isso fiz questão de aderir ao plano família. O suporte é excelente, o que torna uma viagem segura para minha filha de 10 anos e meu cachorro Tob.
@@ -278,7 +288,8 @@ className="mr-3 mt-3 rounded-circle" height="60px" style={{width:"60px"}} />
   style={{backgroundColor: "#ddc4f6"}}
   data-aos="fade-up">
  <div> 
-   <p className="text-center"><img src="https://cdn-icons.flaticon.com/png/512/5829/premium/5829821.png?token=exp=1648666058~hmac=d8caad535191a2b3077dfa35c602f6fc"
+   <p className="text-center"><img 
+   src={astrobandeira} 
    className="img-fluid" style={{height:"200px"}} /> </p>
  </div>
  <div >
@@ -294,7 +305,7 @@ className="mr-3 mt-3 rounded-circle" height="60px" style={{width:"60px"}} />
 
   <div> 
   <p className="text-center">
-    <img src="https://cdn-icons.flaticon.com/png/512/2448/premium/2448650.png?token=exp=1648666522~hmac=d2c051986e8630128a626d279200635d"
+    <img src={gentileza} 
    className="img-fluid" style={{height:"200px"}} /></p> 
  </div>
 

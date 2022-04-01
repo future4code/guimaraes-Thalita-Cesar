@@ -57,7 +57,7 @@ function AplicationFormPage() {
             <form className="col-sm-8 shadow p-5 bg-dark">
   <div class="form-group p-3">
     <select class="form-control" id="exampleFormControlSelect1">
-      <option disabled>Destino</option>
+      <option >Destino</option>
       <option>Europa - Júpiter</option>
       <option>Vênus</option>
       <option>Marte</option>
@@ -83,7 +83,7 @@ function AplicationFormPage() {
 
   <div class="form-group p-3">
     <select class="form-control" id="exampleFormControlSelect1">
-      <option disabled>País</option>
+      <option >País</option>
       <option>Europa - Júpiter</option>
       <option>Vênus</option>
       <option>Marte</option>
