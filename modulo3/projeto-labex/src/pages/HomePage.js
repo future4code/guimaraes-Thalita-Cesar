@@ -34,7 +34,7 @@ color: white;
 
 `
 
-export default function HomePage() {
+const HomePage = () => {
 
  
     const [index, setIndex] = useState(0);
@@ -322,6 +322,7 @@ style={{backgroundColor: "#ddc4f6"}}>
     );
   }
 
+  export default HomePage
 
  
   

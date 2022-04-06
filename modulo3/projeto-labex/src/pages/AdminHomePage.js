@@ -1,9 +1,11 @@
-import React from 'react'
+import React,  {useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 import Menu from '../components/Menu'
 import Footer from'../components/Footer'
+import axios from 'axios'
+import useProtectedPage from '../customHook/useProtectPage'
 
-function AdminHomePage() {
+const AdminHomePage = () => {
 
   const navigate = useNavigate()
   const goBack = () => {
@@ -16,6 +18,22 @@ function AdminHomePage() {
   const goToDetails = () => {
     navigate('/admin/trips/:id')
   }
+
+  useProtectedPage()
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    axios
+      .get
+      ('https://us-central1-labenu-apis.cloudfunctions.net/labeX/guimaraes-thalita-cesar/trip/eZ784aJl8qXHtBUAGgvx', {
+        headers: {
+          auth: token
+        }
+      })
+      .then(res => console.log(res.data.trip))
+      .catch(err => 
+        alert("Erro ao fazer o login. Verifique o usuário e senha e tente novamente."))
+  }, [])
+
 
     return (
       <div>

@@ -22,7 +22,7 @@ const Nav = styled.div `
     background-color: #ddc4f6;
 `
 
-function AplicationFormPage() {
+const AplicationFormPage = () => {
 
   const navigate = useNavigate()
 

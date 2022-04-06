@@ -23,7 +23,7 @@ color: white;
 
 `
 
-function ListTripsPages() {
+const ListTripsPages = () => {
 
   const navigate = useNavigate()
 
