@@ -146,7 +146,7 @@ className="img-fluid card-img-top" />
     <div className="container">
 
     <div className="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 className="jumbotron-heading text-center" data-aos="fade-up">Seja Premiun</h1>
+    <h1 className="jumbotron-heading text-center" data-aos="fade-up">Seja Premium</h1>
     <p className="lead text-muted" data-aos="fade-up">Tenha um pacote que oferece 
     muitos serviços em viagens espaciais. <br></br> Com hotel e alimentação incluso. 
     <br></br>Escolha a opção que melhor se encaixa no seu bolso.</p>

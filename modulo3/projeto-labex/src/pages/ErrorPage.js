@@ -1,7 +1,7 @@
 const ErrorPage = () => {
     return (
       <div className="container">
-          <h1>400</h1>
+          <h1>Página Não Encontrada</h1>
       </div>
     );
   }
