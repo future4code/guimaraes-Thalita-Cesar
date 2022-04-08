@@ -10,5 +10,10 @@ const onChangeForm =(ev) =>{
     [ev.target.name]: ev.target.value 
   })
 }
-return [form, onChangeForm]
+
+const clear = () => {
+  setForm(initialState)
+}
+
+return [form, onChangeForm, clear]
 }

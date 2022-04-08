@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Menu from '../components/Menu'
 import Footer from'../components/Footer'
 import axios from 'axios'
@@ -7,7 +7,6 @@ import useProtectedPage from '../customHook/useProtectPage'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Collapse from 'react-bootstrap/Collapse'
 import styled from "styled-components"
-import { AiFillDelete } from 'react-icons/ai';
 import {IoMdLogOut} from 'react-icons/io';
 import {MdOutlineExpandMore} from 'react-icons/md';
 import {useForm} from "../customHook/useForm"
@@ -28,9 +27,12 @@ const AdminHomePage = () => {
 
   const navigate = useNavigate()
   const [tripsList, setTripsList] = useState([])
-
+  const [tripDetails,setTripDetails] = useState([])
+  const [candidates, setCandidates] = useState([]);
+  const [approveds, setApproveds] = useState([])
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
+
   const [form, onChangeForm] = useForm (
     {
       name: "",
@@ -40,6 +42,7 @@ const AdminHomePage = () => {
       durationInDays: "",
   })
 
+  const params = useParams();
 
 const createTrip =()=>{ 
   const body= form
@@ -66,9 +69,8 @@ const onClickCreate = (ev) => {
   createTrip(form)
 }
 
-
-
   const token = localStorage.getItem('token')
+  console.log(token)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -94,6 +96,78 @@ const onClickCreate = (ev) => {
       navigate("/")
     }
 
+    const getTripsDetails =()=>{
+      axios
+        .get
+        (`https://us-central1-labenu-apis.cloudfunctions.net/labeX/guimaraes-thalita-cesar/trip/${params.id}`,
+        {
+          headers: { 
+              auth: token
+          }
+      }   )
+        .then((res) => {
+          setTripDetails(res.data.trip)
+          setCandidates(res.data.trip.candidates) 
+          setApproveds(res.data.trip.approved)    
+        })
+        .catch((err )=> console.log(err))
+        }  
+        
+        useEffect(()=>{
+          getTripsDetails()
+        },[candidates])
+
+        const ApproveCandidate=()=>{
+
+        }
+
+        const ReproveCandidate=()=>{
+        }
+
+const listApproveds = approveds.map((candidate)=>{
+return (
+<div>
+  <ul className="list-group">
+  <li className="list-group-item list-group-item-action">{candidate.name}</li>
+  </ul>
+</div>
+)})
+
+const CandidatesPendings = candidates.map((candidate) => {
+  return (
+    <ul>
+      <li>
+        <b>Nome: </b>
+        {candidate.name}
+      </li>
+      <li>
+        <b>Profissão: </b>
+        {candidate.profession}
+      </li>
+      <li>
+        <b>Idade: </b>
+        {candidate.age}
+      </li>
+      <li>
+        <b>País: </b>
+        {candidate.country}
+      </li>
+      <li>
+        <b>Texto de Candidatura: </b>
+        {candidate.applicationText}
+      </li>
+
+      <div className="buttons-container-pending">
+        <button onClick={() => ApproveCandidate(candidate.id)}>
+          Aprovar
+        </button>
+        <button onClick={() => ReproveCandidate(candidate.id)}>
+          Reprovar
+        </button>
+      </div>
+    </ul>
+  );
+});
 
 
   const ListTrip = tripsList.map((trip,id) => {
@@ -119,6 +193,14 @@ const onClickCreate = (ev) => {
         <p><b>Data: </b>{trip.date}</p>
         <p><b>Planeta: </b>{trip.planet}</p>
         <p><b>Duração: </b>{trip.durationInDays}</p>
+        </div>
+        <div>
+          <h4>Lista de Aprovados</h4>
+          {listApproveds}
+        </div>
+        <div>
+          <h4>Candidatos Pendentes</h4>
+          {CandidatesPendings}
         </div>
       </Collapse>
     </div>
