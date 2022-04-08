@@ -143,7 +143,7 @@ const ListTripsPages = () => {
       basta clicar em se inscrever abaixo.
 </p>
 
-     <p className="text-center mb-5 mt-2"> <div class="btn-group" 
+     <p className="text-center mb-5 mt-2"> <div className="btn-group" 
      role="group" data-aos="fade-up">
 
           <Button onClick={goToApplicationFormPage}

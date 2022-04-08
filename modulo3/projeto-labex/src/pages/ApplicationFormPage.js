@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from "styled-components"
 import logo from "../images/logo.png"
 import Menu from '../components/Menu'
 import Footer from'../components/Footer'
-
+import {useForm} from '../customHook/useForm'
+import  {countries} from '../contanst/countries'
+import axios from 'axios'
 
 const Button = styled.button`
 border-radius:50px;
@@ -23,6 +25,12 @@ const Nav = styled.div `
 `
 
 const AplicationFormPage = () => {
+  useEffect(()=>{
+    getTrips()
+  },[])
+
+  const [id, setId]=useState("")
+  const [tripslist, setTripsList] = useState([])
 
   const navigate = useNavigate()
 
@@ -30,6 +38,49 @@ const AplicationFormPage = () => {
    const goBack = () => {
      navigate(-1)
    }
+
+   const [form, onChangeForm] = useForm (
+    {
+
+    name: "",
+    trip: "",
+    age: "", 
+    applicationText: "",
+    profession: "",
+    country: "",
+  })
+
+    const getTrips =()=>{
+    axios
+      .get
+      (`https://us-central1-labenu-apis.cloudfunctions.net/labeX/guimaraes-thalita-cesar/trips/`)
+      .then(res => setTripsList(res.data.trips))
+      .catch(err => console.log(err))
+      }   
+    
+
+  const onChangeId = (ev) => {
+    setId(ev.target.value);
+};
+
+const mapTrip = tripslist.map((trip, i)=>{
+return (
+  <option key={i} value={trip.id} >{trip.name}</option>
+)})
+
+console.log(tripslist)
+
+const applyToTrip = () => {
+  const body = form
+  axios
+  .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/guimaraes-thalita-cesar/trips/${form.tripId}/apply`,
+   body)
+   .then((ress)=>{
+    alert("Sua inscrição foi realizada com sucesso. Boa sorte!");})
+.catch((error)=>{
+    console.log(error)})
+}
+
 
     return (
 <div>
@@ -54,51 +105,52 @@ const AplicationFormPage = () => {
 
   
 
-            <form className="col-sm-8 shadow p-5 bg-dark">
-  <div class="form-group p-3">
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option >Destino</option>
-      <option>Europa - Júpiter</option>
-      <option>Vênus</option>
-      <option>Marte</option>
-      <option>Lua</option>
-    </select>
+    <form className="col-sm-8 shadow p-5 bg-dark"
+    onSubmit={applyToTrip}>
+
+  <div className="form-group p-3">
+  <select className="form-control" name={"trip"} 
+  value={form.trip} onChange={onChangeId}
+   required>
+  <option selected disabled>Escolha uma viagem</option>
+  {mapTrip}
+  </select>
+  </div>
+            
+  <div className="form-group p-3">
+   <input type="name" className="form-control" placeholder="Seu Nome"
+   name={"name"} value={form.name} onChange={onChangeForm}
+   required />
   </div>
 
-  <div class="form-group p-3">
-   <input type="name" class="form-control" placeholder="Nome"/>
-  </div>
-
-  <div class="form-group p-3">
- <input type="number" class="form-control" placeholder="Idade"/>
+  <div className="form-group p-3">
+ <input type="number" className="form-control" placeholder="Idade"
+ name={"age"} value={form.age} onChange={onChangeForm}
+ required/>
 </div>
-  <div class="form-group p-3">
-    <textarea class="form-control" rows="3" placeholder="Carta de
-     Candidatura"></textarea>
+  <div className="form-group p-3">
+    <textarea className="form-control" 
+    rows="3" placeholder="Motivos da viagem"
+     name={"applicationText"} value={form.applicationText} 
+     onChange={onChangeForm} required></textarea>
   </div>
 
-  <div class="form-group p-3">
-   <input type="text" class="form-control" placeholder="Profissão"/>
+  <div className="form-group p-3">
+   <input type="text" className="form-control" placeholder="Profissão"
+   name={"profession"} value={form.profession} 
+   onChange={onChangeForm} required/>
   </div>
 
-  <div class="form-group p-3">
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option >País</option>
-      <option>Europa - Júpiter</option>
-      <option>Vênus</option>
-      <option>Marte</option>
-      <option>Lua</option>
-    </select>
+  <div className="form-group p-3" name={"country"} 
+  value={form.country} required>
+      {countries}
   </div>
   </form>
    
       </div>
       </div>
-  
-
-
           <p className="text-center mb-5 mt-2 pb-5"> <div 
-          class="btn-group" 
+          className="btn-group" 
     role="group">
          <Button  type="submit"
          className="btn btn-lg my-2 mt-5 border-left"

@@ -1,15 +1,16 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import Menu from '../components/Menu'
 import Footer from'../components/Footer'
 import axios from 'axios'
 import useProtectedPage from '../customHook/useProtectPage'
-import Url from '../contanst/url'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Collapse from 'react-bootstrap/Collapse'
 import styled from "styled-components"
 import { AiFillDelete } from 'react-icons/ai';
 import {IoMdLogOut} from 'react-icons/io';
+import {MdOutlineExpandMore} from 'react-icons/md';
+import {useForm} from "../customHook/useForm"
 
 const Button = styled.button`
 border-radius:50px;
@@ -27,94 +28,109 @@ const AdminHomePage = () => {
 
   const navigate = useNavigate()
   const [tripsList, setTripsList] = useState([])
-  const token = localStorage.getItem('token')
 
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
+  const [form, onChangeForm] = useForm (
+    {
+      name: "",
+      planet: "",
+      date: "",
+      description: "",
+      durationInDays: "",
+  })
+
+
+const createTrip =()=>{ 
+  const body= form
+  axios
+  .post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/guimaraes-thalita-cesar/trips',
+  body,
+  {
+    headers: { 
+        auth: token
+    }
+}   
+  )
+  .then((res)=>{
+    alert("Nova Viagem Foi Criada!")
+
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+
+const onClickCreate = (ev) => {
+  ev.preventDefault()
+  createTrip(form)
+}
+
+
+
+  const token = localStorage.getItem('token')
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useProtectedPage()
 
-  const goToCreateTripPage = () => {
-    navigate('/admin/trips/create')
-  }
-
-  const goToDetails = () => {
-    navigate('/admin/trips/:id')
-  }
-
-
   
     const getTrips =()=>{
     axios
       .get
-      (Url + `/trips/`, {
-        headers: {
-          auth: token
-        }
-      })
-      .then(res => setTripsList(res.trips))
+      (`https://us-central1-labenu-apis.cloudfunctions.net/labeX/guimaraes-thalita-cesar/trips/`)
+      .then(res => setTripsList(res.data.trips))
       .catch(err => console.log(err))
-      }   
-
-
-  const deleteTrip = (id) => {
-    axios
-    .delete
-    (Url + `/trips/${id}`, 
-    {
-      headers: {
-      auth: token}
-    })
-      .then(() => {
-        window.location.reload()
-      })
-      .catch((err) => console.log(err.message))
-    }
-
-   // const createTrip = (ev) => {
-   //   ev.preventDefault()
-   //   const body = form;
-   //   axios.post(Url + `/trips/`, 
-   //   body, {
-   //     headers: {
-   //       auth: token
-   //     }
-   //   })
+      }  
       
-   //     .then((res) => {
-   //       alert("Viagem criada com sucesso")
-   //       window.location.reload()
-   //     })
-   //     .catch((er) => {
-   //       console.log("erro: ", er.response)
-   //     })
-   //  }
+      useEffect(()=>{
+        getTrips()
+      },[])
 
 
-    const outLocalStorage =() =>{
+  const outLocalStorage =() =>{
       localStorage.setItem('token', "")
       navigate("/")
     }
 
 
-    const ListTrip = tripsList.map((trip,id) => {
-      return <div key={id} name={trip.name} id={trip.id}>
-        {trip.name}
+
+  const ListTrip = tripsList.map((trip,id) => {
+      return (
+
+      <div className="media border p-3 mt-5 shadow" 
+      key={id} name={trip.name} id={trip.id} getTrips={getTrips}
+      style={{backgroundColor: "#ddc4f6"}}>
+      <div className="media-body">
+      <h3 className="jumbotron-heading text-center m-3">{trip.name} </h3>
+      <div className="media-footer">
+      <div>
+      <button
+        className="btn btn-outline-light rounded-circle"
+        onClick={() => setOpen(!open)}
+        aria-controls="example-collapse-text"
+        aria-expanded={open} >
+       <MdOutlineExpandMore/>
+      </button>
+      <Collapse in={open}>
+        <div id="example-collapse-text">
+        <p><b>Descrição:</b>{trip.description}</p>
+        <p><b>Data: </b>{trip.date}</p>
+        <p><b>Planeta: </b>{trip.planet}</p>
+        <p><b>Duração: </b>{trip.durationInDays}</p>
+        </div>
+      </Collapse>
+    </div>
       </div>
+
+
+ </div>
+ </div>
+ 
+ )
   })
 
-  const onClickDelete=(ev, trip) => {
-    ev.stopPropagation()
-    if (window.confirm(`Tem certeza que deseja deletar a viagem?`)) {
-      deleteTrip(trip.id, getTrips)
-    }
-  }
-  useEffect(() => {
-    
-  }, [getTrips])
 
 
     return (
@@ -128,45 +144,9 @@ const AdminHomePage = () => {
 
 
           <div className="container">
-
-          <div className="row align-items-center">
-          <div className="col-sm">
-          <div className="card-deck mb-3 text-center shadow">
-          <div className="card mb-4 shadow-sm" style={{backgroundColor: "#ddc4f6"}}>
-          <div className="card-header">
-          <p className="text-end">
-  <button className="btn btn-outline-light rounded-circle"
-   onClick={onClickDelete}>
-    <AiFillDelete/></button></p>
-          <h3 className="jumbotron-heading text-center m-3">{ListTrip}</h3>
-        </div>
-                    <div className="card-footer">
-                      <div>
-      <Button
-        className="btn btn-lg my-2"
-        onClick={() => setOpen(!open)}
-        aria-controls="example-collapse-text"
-        aria-expanded={open}
-      >
-        Detalhes
-      </Button>
-      <Collapse in={open}>
-        <div id="example-collapse-text">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-          terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-          labore wes anderson cred nesciunt sapiente ea proident.
-        </div>
-      </Collapse>
-    </div>
-
-                    </div>
-                    </div>
-                </div>
-                </div>
-                </div>
+            <div className="mb-5"> {ListTrip} </div>
 
           <div className="botaogrupo">
-
           <div>
       <Button className="btn btn-lg my-2"
        variant="primary" onClick={handleShow}>
@@ -180,39 +160,56 @@ const AdminHomePage = () => {
             Crie uma Nova Viagem</h3></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-        <form>
+        <form onSubmit={onClickCreate}>
 
         <div className="form-group p-3">
         <input type="name" className="form-control" 
-        placeholder="Nome da Viagem"/>
+        placeholder="Nome da Viagem"
+        name={"name"} value={form.name} onChange={onChangeForm}
+        required/>
         </div>
 
         <div className="form-group p-3">
-        <select className="form-control" id="exampleFormControlSelect1">
-        <option >Escolha um Planeta</option>
-        <option>Europa - Júpiter</option>
-        <option>Vênus</option>
-        <option>Marte</option>
-        <option>Lua</option>
-        </select>
+
+        <select className="form-control" onChange={onChangeForm}
+         name={"planet"} value={form.planet} required>
+      <option selected disabled>Planeta</option>
+      <option value="Mercúrio">Mercúrio</option>
+      <option value="Vênus">Vênus</option>
+      <option value="Terra">Terra</option>
+      <option value="Marte">Marte</option>
+      <option value="Júpiter">Júpiter</option>
+      <option value="Saturno">Saturno</option>
+      <option value="Urano">Urano</option>
+      <option value="Netuno">Netuno</option>
+      <option value="Plutão">Plutão</option>
+      </select>  
+        
         </div>
 
         <div className="form-group p-3">
         <input type="date" className="form-control" 
-        placeholder="Nome da Viagem"/>
+        placeholder="Nome da Viagem"
+        required
+        name={"date"} value={form.date} onChange={onChangeForm}/>
         </div>
 
 
         <div className="form-group p-3">
-        <textarea className="form-control" rows="3" placeholder="Descrição"></textarea>
+        <textarea className="form-control" rows="3" placeholder="Descrição"
+        required
+        name="description"value={form.description} onChange={onChangeForm}></textarea>
         </div>
 
         <div className="form-group p-3">
-        <input type="number" className="form-control" placeholder="Duração em Dias"/>
+        <input type="number" className="form-control" placeholder="Duração em Dias"
+        required
+        name={"durationInDays"} value={form.durationInDays} onChange={onChangeForm}
+          />
         </div>
 
         <div className="form-group p-3">
-        <Button className="btn btn-lg my-2 ">Criar</Button>
+        <Button type="submit" className="btn btn-lg my-2 ">Criar</Button>
         </div> 
 
         </form> 
@@ -231,6 +228,8 @@ const AdminHomePage = () => {
       </div>
       </div>
       </main>
+
+
 
 <footer 
 className="footer mt-5 pt-5" 

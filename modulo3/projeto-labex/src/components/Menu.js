@@ -83,7 +83,7 @@ const Menu = () => {
         </Modal.Header>
         <Modal.Body style={{backgroundColor: "#ddc4f6"}}>
         <form className="form">
-         <h3 class="text-center m-3 p-3">Login Adm</h3>
+         <h3 className="text-center m-3 p-3">Login Adm</h3>
 
                  <div className="form-group input-group m-2 p-2">
                  <button className="btn btn-lg bg-light">
@@ -91,7 +91,8 @@ const Menu = () => {
                    <input type="email" 
                    className="form-control"
                    value={email}
-                   onChange={onChangeEmail}/>
+                   onChange={onChangeEmail}
+                   required/>
                  </div>
 
                  <div className="form-group input-group m-2 p-2">
@@ -100,7 +101,10 @@ const Menu = () => {
                  <input type="password" 
                  className="form-control"
                  value={password} 
-                 onChange={onChangePassword}/>
+                 onChange={onChangePassword}
+                 required
+                 pattern={".{3,}"}
+                 />
                  </div>
 
                  <div className="form-group m-2 p-2">
