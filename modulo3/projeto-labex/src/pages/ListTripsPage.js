@@ -54,13 +54,14 @@ const ListTripsPages = () => {
       src={europa}/>
       </div>
     <div className="card-body">
-    <h4 class="card-title text-center">Europa - Júpiter</h4>
+    <h4 class="card-title text-center">Lollapajúpiter</h4>
     <div className="card-deck mb-3 text-center">
       A melhor visão do universo. É possível ver júpiter de pertinho. 
       Em europa se concentra as maiores empresas do sistema solar.
       Os maiores eventos músicais também se encontra lá. 
+         <p><b>Planeta:</b>Europa - Júpiter</p>
         <p><b>Data:</b>08/04/2022</p>
-        <p><b>Duração:</b>5 dias</p>
+        <p><b>Duração:</b>15 dias</p>
         </div>
         </div>
       <div className="card-footer">
@@ -78,11 +79,12 @@ const ListTripsPages = () => {
       src={venus}/>
       </div>
     <div className="card-body">
-    <h4 class="card-title text-center">Vênus</h4>
+    <h4 class="card-title text-center">Voltinha Venusiana</h4>
     <div className="card-deck mb-3 text-center">
       Romantismo e arte. Vênus é o ponto preferido para viagem a dois e 
       retiros espirituais. Vênus possui lindos lagos artificiais, inúmeros
-      hóteis e diversos museus de arte moderna.  
+      hóteis e diversos museus de arte moderna.
+      <p><b>Planeta:</b>Vênus</p>  
       <p><b>Data:</b>11/11/2022</p>
       <p><b>Duração:</b>15 dias</p>
         </div>
@@ -101,12 +103,13 @@ const ListTripsPages = () => {
       src={marte}/>
       </div>
     <div className="card-body">
-    <h4 class="card-title text-center">Marte</h4>
+    <h4 class="card-title text-center">Luta Marciana</h4>
     <div className="card-deck mb-3 text-center">
       Marte possui diversos pontos de festivais de lutas, 
       Muay Thai, Jiu Jitsu e Luta Livre. Também conta com o evento 
       das Olimpiadas Do Sistema Solar, que ocorre em setembro. 
       O planeta animado ainda tem diversos campeonatos como a corrida de naves.
+      <p><b>Planeta:</b>Marte</p>
       <p><b>Data:</b>07/08/2022</p>
        <p><b>Duração:</b>15 dias</p>
         </div>
@@ -125,12 +128,13 @@ const ListTripsPages = () => {
       src={lua}/>
       </div>
     <div className="card-body">
-    <h4 class="card-title text-center">Lua</h4>
+    <h4 class="card-title text-center">Virada de Ano Lunática</h4>
     <div className="card-deck mb-3 text-center">
       É um lugar visitado por empresários. Nos últimos anos a lua se tornou um 
       agrupado de fábricas e centros de pesquisa ciêntifica. 
       Há diversas cidades. Com a vançada tecnologia é possível tomar banho nas 
       catreras avistando a bela vista do céu estrelado.
+      <p><b>Planeta:</b>Lua</p>
       <p><b>Data:</b>31/12/2022</p>
       <p><b>Duração:</b>2 dias</p>
         </div>
