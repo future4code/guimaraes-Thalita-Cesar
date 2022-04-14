@@ -9,7 +9,7 @@ Para acessar o painel administrativo é preciso usar o email e senha:
 
 > thalita@gmail.com.br
 > 
-> 300393
+> 123456
 
 ## Link do Surge
 https://labex_thalita.surge.sh/ 
