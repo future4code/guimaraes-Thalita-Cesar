@@ -12,7 +12,7 @@ describe("Checa itens duplicados", () => {
         expect(resultado).toEqual(true);
       });
 
-      test("retorna true pra [5, 5, 3, 6, 5, 6]", () => {
+      test("retorna true pra [5, 5, 3, 6, 5, 3]", () => {
         const resultado = checaItensDuplicados([5, 5, 3, 6, 5, 6]);
         expect(resultado).toEqual(true);
       });
