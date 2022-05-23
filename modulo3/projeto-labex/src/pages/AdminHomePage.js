@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import Menu from '../components/Menu'
 import Footer from'../components/Footer'
 import axios from 'axios'
@@ -11,6 +11,7 @@ import {IoMdLogOut} from 'react-icons/io';
 import {FcDisapprove} from 'react-icons/fc';
 import {FcApprove} from 'react-icons/fc';
 import {MdOutlineExpandMore} from 'react-icons/md';
+import { AiFillDelete } from 'react-icons/ai';
 import {useForm} from "../customHook/useForm"
 
 
@@ -29,13 +30,10 @@ color: white;
 const AdminHomePage = () => {
 
   useProtectedPage()
-
-  const [tripDetails, setTripDetails] = useState([])
-  const [candidates, setCandidates] = useState([]);
-  const [approved, setApproved] = useState([]);
+  const [tripsList, setTripsList] = useState([])
+  const [tripDetail, setTripDetail] = useState([]);
   const [show, setShow] = useState(false);
   const [open, setOpen] = useState(false);
-  const pathParams = useParams();
   const navigate = useNavigate()
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -51,6 +49,7 @@ const AdminHomePage = () => {
 
 const token = localStorage.getItem('token')
 
+
 // logout
 
 const outLocalStorage =() =>{
@@ -58,20 +57,37 @@ const outLocalStorage =() =>{
   navigate("/")
 }
 
+const Url = 'https://us-central1-labenu-apis.cloudfunctions.net/labeX/guimaraes-thalita-cesar'
+const headers =   {
+  headers: { 
+      auth: token
+  }
+}   
 // Api
+
+const getTrips =()=>{
+  axios
+    .get
+    (`${Url}/trips`)
+    .then(res => setTripsList(res.data.trips))
+    .catch(err => console.log(err))
+    }   
+
+    useEffect(()=>{
+      getTrips()
+    },[])
+
+    const tripId = tripsList.id;
+    console.log(tripId)
+
 
 //criar viagem
 
 const createTrip =()=>{ 
   const body= form
   axios
-  .post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/guimaraes-thalita-cesar/trips',
-  body,
-  {
-    headers: { 
-        auth: token
-    }
-}   
+  .post(`${Url}/trips`,
+  body, headers
   )
   .then((res)=>{
     alert("Nova Viagem Foi Criada!")
@@ -88,81 +104,86 @@ const onClickCreate = (ev) => {
 }
 
 
- // detalhes 
+ // 
 
- const getTrips =()=>{
+
+ const getTripsDetails = (id) => {
+   axios
+     .get(`${Url}/trip/${id}`, headers)
+     .then((res) => {
+       setTripDetail(res.data.trip);
+     })
+     .catch((err) => {
+       console.log(err.response.data);
+     });
+ }
+ useEffect(() => {
+  getTripsDetails();
+});
+
+ const aproveCandidate = (candidate, tripId) => {
+   const body = { approve: true };
+   axios
+     .put(`${Url}/trips/${tripId}/candidates/${candidate.id}/decide`,
+       body, headers)
+     .then((res) => {
+      alert(`Você aprovou o candidato ${candidate.name}!`);
+        getTripsDetails();
+      
+     })
+     .catch((err) => {
+       alert(err.response.data.message);
+     });
+ };
+
+ const reproveCandidate = (candidate, tripId) => {
+   const body = { approve: false };
+   axios
+     .put(`${Url}/trips/${tripId}/candidates/${candidate.id}/decide`,
+       body, headers)
+     .then((res) => {
+      alert(`Você reprovou o candidato ${candidate.name}!`);
+       getTripsDetails();
+     })
+     .catch((err) => {
+       alert(err.response.data.message);
+     });
+ };
+
+
+ const deleteTrip = (tripId) => {
   axios
-    .get
-    (`https://us-central1-labenu-apis.cloudfunctions.net/labeX/guimaraes-thalita-cesar/trips/`)
-    .then(res => setTripDetails(res.data.trips))
-    .catch(err => console.log(err))
-    }   
-    useEffect(()=>{
-      getTrips()
-    },[])
-
-
- useEffect(()=>{
-      axios
-        .get
-        (`https://us-central1-labenu-apis.cloudfunctions.net/labeX/guimaraes-thalita-cesar/trip/${pathParams.trip_id}`,
-        {
-          headers: { 
-              auth: token
-          }
-      })
-        .then(res => {
-          
-          setCandidates(res.data.trip.candidates);
-          
-        })
-        .catch((err )=> alert("Erro na obtenção de dados"))
-          
-      },[])
-
-
-
-
-// Candidates
-
-      const DecideCandidate = (tripId, id, approved)=>{
-        const body ={ approve: approved}
-        axios.put (`https://us-central1-labenu-apis.cloudfunctions.net/labeX/guimaraes-thalita-cesar/trip/${tripId}/candidate/${id}/decide`
-          , body,
-          {
-            headers: { 
-                auth: token
-            }
-        })
-        .then((ress)=>{
-          alert("Candidato Aprovado com Sucesso")
-        })
-        .catch((err)=> {
-          alert("Candidato Reprovado com Sucesso")
-        })
-      }
-
+  .delete
+  (`${Url}/trips/${tripId}`, headers)
+    .then(() => {
+      alert("A viagem foi deletada")
+      window.location.reload()
+    })
+    .catch((err) => console.log(err.message))
+  }
 
 // Maps 
 
 //Lista de Candidatos
 
-const listApproveds = approved.map((candidate)=>{
+const listApproveds = tripDetail.approved?.map((candidate) => {
 return (
-<div>
+<div key ={candidate.id}>
+<h4>Lista de Aprovados</h4>
   <ul className="list-group">
   <li className="list-group-item list-group-item-action"
-  key ={candidate.id}>{candidate.name}</li>
+  >{candidate.name}, {candidate.age}, {candidate.country}</li>
   </ul>
 </div>
 )})
 
 // Candidatos pendentes
 
-const CandidatesPendings = candidates.map((candidate) => {
+const CandidatesPendings = tripDetail.candidates?.map((candidate) => {
   return (
     <div className="media border p-3 mt-5 shadow"
     key={candidate.id}>
+       <h4>Candidatos Pendentes</h4>
     <ul className="list-group">
       <li className="list-group-item list-group-item-action">
         <b>Nome:</b>{candidate.name}</li>
@@ -177,10 +198,10 @@ const CandidatesPendings = candidates.map((candidate) => {
       </ul>
       <div className="buttons-container-pending">
         <Button className="btn btn-lg my-2 " 
-        onClick={() => DecideCandidate(candidate.id, true)}> <FcApprove/>
+        onClick={() => aproveCandidate(candidate)}> <FcApprove/>
         </Button>
         <Button className="btn btn-lg my-2 "
-        onClick={() => DecideCandidate(candidate.id, false)}>
+        onClick={() => reproveCandidate(candidate)}>
         <FcDisapprove/></Button>
       </div>
       </div>
@@ -188,54 +209,57 @@ const CandidatesPendings = candidates.map((candidate) => {
 });
 
 //Lista de Viagens 
+const ListTrip = tripsList.map((trip, id) => {
+  return (
 
+  <div className="media border p-3 mt-5 shadow" 
+  key={id} name={trip.name} id={trip.id}
+  style={{backgroundColor: "#ddc4f6"}}>
 
-  const ListTrip = tripDetails.map((trip,id) => {
-      return (
-
-      <div className="media border p-3 mt-5 shadow" 
-      key={id} name={trip.name} id={trip.id}
-      style={{backgroundColor: "#ddc4f6"}}>
-      <div className="media-body">
-      <h3 className="jumbotron-heading text-center m-3">{trip.name} </h3>
-      <div className="media-footer">
-
-      <div>
-      <button
-        className="btn btn-outline-light rounded-circle m-3"
-        onClick={() => setOpen(!open)}
-        aria-controls="example-collapse-text"
-        aria-expanded={open}
-      >
-        <MdOutlineExpandMore/>
-      </button>
-      <Collapse in={open}>
-        <div id="example-collapse-text">
-      <p><b>Descrição:</b>{trip.description}</p>
-      <p><b>Data: </b>{trip.date}</p>
-      <p><b>Planeta: </b>{trip.planet}</p>
-      <p><b>Duração: </b>{trip.durationInDays}</p>
-      <div>
-        <h4>Lista de Aprovados</h4>
-        {listApproveds}
-      </div>
-      <div>
-        <h4>Candidatos Pendentes</h4>
-        {CandidatesPendings}
-      
-        </div>
-        </div>
-      </Collapse>
+    <div className="media-header">
+    <p className="text-end">
+  <button className="btn btn-outline-light rounded-circle"
+   onClick={deleteTrip}>
+    <AiFillDelete/></button></p>
     </div>
-       </div>
-      </div>
-      </div>
-       
- 
- )
-  })
+    
+  <div className="media-body">
+  <h3 className="jumbotron-heading text-center m-3">{trip.name} </h3>
+
+  <div className="media-footer">
+
+  <div>
+  <button
+    className="btn btn-outline-light rounded-circle m-3"
+    onClick={() => setOpen(!open)}
+    aria-controls="example-collapse-text"
+    aria-expanded={open}
+  >
+    <MdOutlineExpandMore/>
+  </button>
+  <Collapse in={open}>
+    <div id="example-collapse-text">
+  <p><b>Descrição:</b>{trip.description}</p>
+  <p><b>Data: </b>{trip.date}</p>
+  <p><b>Planeta: </b>{trip.planet}</p>
+  <p><b>Duração: </b>{trip.durationInDays}</p>
+  <div>
+    {listApproveds}
+  </div>
+  <div>
+    {CandidatesPendings}
+
+    </div>
+    </div>
+  </Collapse>
+</div>
+   </div>
+  </div>
+  </div>
 
 
+)
+})
 
     return (
       <div>
@@ -248,7 +272,9 @@ const CandidatesPendings = candidates.map((candidate) => {
 
 
           <div className="container">
-            <div className="mb-5"> {ListTrip} </div>
+            <div className="mb-5"> 
+            {ListTrip}
+     </div>
 
           <div className="botaogrupo">
           <div>
@@ -275,7 +301,7 @@ const CandidatesPendings = candidates.map((candidate) => {
 
         <div className="form-group p-3">
 
-        <select className="form-control" onChange={onChangeForm}
+      <select className="form-control" onChange={onChangeForm}
          name={"planet"} value={form.planet} required>
       <option selected disabled>Planeta</option>
       <option value="Mercúrio">Mercúrio</option>
