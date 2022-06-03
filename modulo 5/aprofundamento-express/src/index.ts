@@ -9,4 +9,4 @@ app.listen(3003, () => console.log('Server rodando na porta 3003'));
 
 app.get("/ping", (req, res) => {          
     res.send("Pong! 🏓")
-})
+});
