@@ -1,5 +1,3 @@
-USE `guimaraes-4211482-thalita-cesar`;
-
 #1 
 
 CREATE TABLE Actor (
