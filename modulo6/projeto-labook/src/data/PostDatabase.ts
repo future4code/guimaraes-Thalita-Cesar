@@ -1,4 +1,3 @@
-import { authenticationData } from "../types/authenticationData";
 import { post } from "../types/post";
 import { BaseDatabase } from "./BaseDatabase";
 
