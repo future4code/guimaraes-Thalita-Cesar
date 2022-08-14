@@ -24,7 +24,7 @@ export class PostController {
       }
     getPostById = async (req: Request, res: Response) => {
         try {
-          const id  = req.params;
+          const {id}  = req.params;
           const postBusiness = new PostBusiness();
           const post = await postBusiness.getPostById(id);
           res.status(200).send(post);

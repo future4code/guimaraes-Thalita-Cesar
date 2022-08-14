@@ -14,3 +14,11 @@
          author_id VARCHAR(255),
          FOREIGN KEY (author_id) REFERENCES labook_users (id)
       );
+
+       CREATE TABLE IF NOT EXISTS friendship_tab(
+         id VARCHAR(255) PRIMARY KEY,
+         follower_id VARCHAR(255),
+         FOREIGN KEY (follower_id) REFERENCES labook_users (id),
+         followed_id VARCHAR(255),
+         FOREIGN KEY (followed_id) REFERENCES labook_users (id)
+      );
